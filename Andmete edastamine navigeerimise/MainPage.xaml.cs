@@ -35,9 +35,14 @@ namespace Andmete_edastamine_navigeerimise
             if (selected != null)
             {
                 list.SelectedItem = null;
-                await Navigation.PushAsync(new Maakonnad(selected);
+                await Navigation.PushAsync(new Maakonnad(selected));
             }
+            
 
+        }
+        protected internal void AddMaakond(Maakond maakond)
+        {
+            Maakonnads.Add(maakond);
         }
     }
 }

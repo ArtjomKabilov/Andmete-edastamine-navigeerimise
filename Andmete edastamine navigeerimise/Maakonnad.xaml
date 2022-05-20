@@ -4,9 +4,15 @@
              x:Class="Andmete_edastamine_navigeerimise.Maakonnad">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="nimetusEntry" Text="{Binding Path=Nimetus}"/>
+            <Entry x:Name="pealinnEntry" Text="{Binding Path=Pealinn}"/>
+            <StackLayout Orientation="Horizontal">
+                <Stepper x:Name="arv_stepper" Minimum="0" Maximum="10000000" Increment="100"
+                 Value="{Binding Path=inimeste_arv}"/>
+                <Label x:Name="arvlbl" FontSize="Large"
+                Text="{Binding Source={x:Reference Name=arv_stepper}, Path=Value }"/>
+            </StackLayout>
+            <Button Text="Salvesta" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

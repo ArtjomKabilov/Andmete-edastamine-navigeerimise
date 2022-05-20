@@ -10,7 +10,7 @@ namespace Andmete_edastamine_navigeerimise
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
