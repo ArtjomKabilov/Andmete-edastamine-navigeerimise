@@ -5,6 +5,7 @@
 
     <StackLayout>
         <Button Text="Lisa" Clicked="Button_Clicked" />
+        <Button x:Name="btn" Text="Loe failist" Clicked="Loe_failist"/>
         <ListView x:Name="list" ItemsSource="{Binding}" ItemSelected="list_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>

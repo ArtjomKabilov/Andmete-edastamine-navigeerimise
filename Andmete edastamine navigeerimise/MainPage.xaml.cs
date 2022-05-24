@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace Andmete_edastamine_navigeerimise
 {
     public partial class MainPage : ContentPage
     {
+        string filename;
+        string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         protected internal ObservableCollection<Maakond> Maakonnads { get; set; }
         public MainPage()
         {
@@ -43,6 +46,26 @@ namespace Andmete_edastamine_navigeerimise
         protected internal void AddMaakond(Maakond maakond)
         {
             Maakonnads.Add(maakond);
+        }
+
+        private void Loe_failist(object sender, EventArgs e)
+        {
+            filename = "Maakonnad.txt";
+            if (String.IsNullOrEmpty(filename)) return;
+            if (filename != null)
+            {
+                String[] Andmed = File.ReadAllLines(Path.Combine(folderPath, filename));
+                for (int i = 0; i < Andmed.Length; i++)
+                {
+                    var columns = Andmed[i].Split(' ');
+                    var maakond = new Maakond(columns[0], columns[1], int.Parse(columns[2]));
+                    if (Maakonnads.Where(m=>m.Nimetus==maakond.Nimetus).FirstOrDefault()==null)
+                    {
+                        Maakonnads.Add(maakond);
+                    }
+                    list.BindingContext = Maakonnads;
+                }
+            }
         }
     }
 }

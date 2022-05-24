@@ -10,6 +10,13 @@ namespace Andmete_edastamine_navigeerimise
         string nimetus;
         string pealinn;
         int inimeste_arv;
+        public Maakond() { }
+        public Maakond(string Nimetus, string Pealinn, int Inimeste_arv)
+        {
+            nimetus = Nimetus;
+            pealinn = Pealinn;
+            inimeste_arv = Inimeste_arv;
+        }
         public string Nimetus
         {
             get { return nimetus; }
